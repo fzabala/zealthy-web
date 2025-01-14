@@ -1,0 +1,33 @@
+.button {
+  background-color: rgb(var(--primary-color));
+  border: none;
+  padding: calc(var(--vertical-space) / 2) var(--horizontal-space);
+  border-radius: var(--border-radius);
+  color: rgb(var(--primary-color-text));
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(var(--primary-color-hover));
+  }
+
+  &:disabled {
+    opacity: var(--opacity-disabled);
+  }
+
+  &--empty {
+    background-color: transparent;
+    border: 1px solid rgb(var(--border-color));
+    &:hover {
+      background-color: rgb(var(--border-color));
+    }
+  }
+
+  &-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: row;
+  }
+}

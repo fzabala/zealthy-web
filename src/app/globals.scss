@@ -1,0 +1,88 @@
+:root {
+  --primary-color: 85, 182, 133;
+  --primary-color-hover: 61, 166, 120;
+  --primary-color-text: 255, 255, 255;
+  --primary-color-background: 30, 51, 56;
+  --text-color: 255, 255, 255;
+  --text-color-alt: 200, 200, 200;
+  --secondary-color-text: 255, 255, 255;
+  --background-color: 18, 24, 38;
+  --background-color-alt: 25, 33, 46;
+  --border-color: 46, 54, 68;
+  --danger-color: 212, 80, 74;
+  --danger-color-background: 56, 20, 10;
+  --warning-color: 237, 201, 72;
+
+  --vertical-space: 1rem;
+  --horizontal-space: 2rem;
+
+  --container-vertical-space: 1rem;
+  --container-horizontal-space: 4rem;
+  --border-radius: 0.5rem;
+
+  --opacity-disabled: 0.6;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: rgb(var(--text-color));
+  background: rgb(var(--background-color));
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.page {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  background-size: cover;
+  position: relative;
+  padding: var(--container-vertical-space) var(--container-horizontal-space);
+}
+
+.wrapper {
+  display: grid;
+  grid-auto-columns: 1fr;
+  padding: var(--vertical-space) 0;
+  gap: var(--inner-horizontal-space);
+
+  &-column {
+    grid-row: 1;
+    gap: var(--vertical-space);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--pull_right {
+    justify-items: flex-end;
+  }
+}

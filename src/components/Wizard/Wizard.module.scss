@@ -1,0 +1,28 @@
+.wizard {
+  &-list {
+    display: flex;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+
+    &-item {
+      background-color: rgb(var(--background-color-alt));
+      border: 1px solid rgb(var(--border-color));
+      padding: calc(var(--vertical-space) / 2) calc(var(--horizontal-space) / 2);
+
+      &--active {
+        background-color: rgb(var(--primary-color));
+      }
+    }
+  }
+  &-step {
+    background-color: rgb(var(--background-color-alt));
+    border: 1px solid rgb(var(--border-color));
+    border-radius: var(--border-radius);
+    padding: var(--vertical-space) var(--horizontal-space);
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+}

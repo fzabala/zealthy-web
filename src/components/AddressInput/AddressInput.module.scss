@@ -1,0 +1,7 @@
+.address_input {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  gap: var(--horizontal-space);
+  margin-bottom: var(--vertical-space);
+}
