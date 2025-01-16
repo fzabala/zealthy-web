@@ -1,5 +1,7 @@
 import { fetchAPI } from "@/lib/api";
 import { STEPS } from "@/types/steps.type";
+import { UserFormSignUpType } from "@/types/user-form-sign-up.type";
+import { UserFormValuesType } from "@/types/user-form-values.type";
 import { UserType } from "@/types/user.type";
 
 export const indexUsers = async () => {
@@ -10,12 +12,7 @@ export const indexUsers = async () => {
   return await fetchAPI<ResponseType>("/users");
 };
 
-type CreateUserRequest = {
-  email: string;
-  password: string;
-};
-
-export const createUser = async ({ email, password }: CreateUserRequest) => {
+export const createUser = async ({ email, password }: UserFormSignUpType) => {
   type ResponseType = {
     data: UserType;
   };
@@ -28,21 +25,10 @@ export const createUser = async ({ email, password }: CreateUserRequest) => {
   return await fetchAPI<ResponseType>("/users", {}, options);
 };
 
-type UpdateUserRequest = {
-  about: string;
-  birthDate: string;
-  address: {
-    street: string;
-    city: string;
-    state: string;
-    zip: string;
-  };
-};
-
 export const updateUser = async (
   id: number,
   progress: STEPS,
-  { about, birthDate, address }: Partial<UpdateUserRequest>
+  { about, birthDate, address }: Partial<UserFormValuesType>
 ) => {
   type ResponseType = {
     data: UserType;
