@@ -50,7 +50,7 @@ export const Input = ({
     <div className={updatedClassName}>
       {wrappedInput}
       {meta.error && (
-        <span className={styles["input-error"]}>{meta.error.toString()}</span>
+        <span className={styles["input-error"]}>{meta.error}</span>
       )}
     </div>
   );
