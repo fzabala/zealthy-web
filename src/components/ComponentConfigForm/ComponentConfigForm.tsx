@@ -1,9 +1,8 @@
 "use client";
 
 import { Button } from "@/components/Button";
-import { Checkbox } from "@/components/Checkbox";
+import { ComponentConfigFormItem } from "@/components/ComponentConfigFormItem";
 import { ErrorMessage } from "@/components/ErrorMessage";
-import { Typography } from "@/components/Typography";
 import { saveComponentConfigs } from "@/services/component-config";
 import { ComponentConfigType } from "@/types/component-config.type";
 import { FieldType } from "@/types/field.type";
@@ -33,8 +32,6 @@ export const ComponentConfigForm = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const allFields = ["about", "address", "birthDate"];
-  const defaultForStep2 = fields.find((field) => field.defaultForStep === "2");
-  const defaultForStep3 = fields.find((field) => field.defaultForStep === "3");
 
   const initialValues: Record<string, boolean> = {};
 
@@ -83,51 +80,18 @@ export const ComponentConfigForm = ({
       <Form>
         <div className="wrapper">
           <div className="wrapper-column">
-            <Typography element="h2">Step 2</Typography>
-            <hr />
-            <Typography color="primary" element="h3">
-              Your configuration
-            </Typography>
-
-            {allFields.map((field) => (
-              <Checkbox
-                key={`component-config-${field}`}
-                label={field}
-                name={`${field}_2`}
-              />
-            ))}
-            <hr />
-            <Typography color="primary" element="h3">
-              Default field
-            </Typography>
-            {defaultForStep2 ? (
-              defaultForStep2.component
-            ) : (
-              <em>no default field for step 2</em>
-            )}
+            <ComponentConfigFormItem
+              allFields={allFields}
+              fields={fields}
+              step="2"
+            />
           </div>
           <div className="wrapper-column">
-            <Typography element="h2">Step 3</Typography>
-            <hr />
-            <Typography color="primary" element="h3">
-              Your configuration
-            </Typography>
-            {allFields.map((field) => (
-              <Checkbox
-                key={`component-config-${field}`}
-                label={field}
-                name={`${field}_3`}
-              />
-            ))}
-            <hr />
-            <Typography color="primary" element="h3">
-              Default field
-            </Typography>
-            {defaultForStep3 ? (
-              defaultForStep3.component
-            ) : (
-              <em>no default field for step 3</em>
-            )}
+            <ComponentConfigFormItem
+              allFields={allFields}
+              fields={fields}
+              step="3"
+            />
           </div>
         </div>
         {error && <ErrorMessage>{error}</ErrorMessage>}
