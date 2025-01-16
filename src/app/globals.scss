@@ -96,6 +96,7 @@ a {
 
 .react-datepicker {
   &-popper {
+    transform: translate(10px, 72px) !important;
     &[data-placement^="bottom"] .react-datepicker__triangle {
       fill: rgb(var(--background-color-alt)) !important;
       color: rgb(var(--background-color-alt)) !important;
