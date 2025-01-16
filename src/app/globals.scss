@@ -1,3 +1,5 @@
+@use "variables";
+
 :root {
   --primary-color: 85, 182, 133;
   --primary-color-hover: 61, 166, 120;
@@ -67,11 +69,12 @@ a {
 .wrapper {
   display: grid;
   grid-auto-columns: 1fr;
+  gap: var(--horizontal-space);
+  grid-template-columns: 1fr;
+  width: 100%;
   padding: var(--vertical-space) 0;
-  gap: var(--inner-horizontal-space);
 
   &-column {
-    grid-row: 1;
     gap: var(--vertical-space);
     display: flex;
     flex-direction: column;
@@ -84,6 +87,10 @@ a {
 
   &--pull_right {
     justify-items: flex-end;
+  }
+
+  @media screen and (min-width: variables.$breakpoint-md) {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
