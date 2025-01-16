@@ -1,8 +1,10 @@
 import { format } from "date-fns";
+import * as locale from "date-fns/locale";
 import { useField } from "formik";
-import DatePicker, { DatePickerProps } from "react-datepicker";
+import DatePicker, { DatePickerProps, registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./DateInput.module.scss";
+registerLocale("en", locale.enUS);
 
 type DateInputProps = Omit<DatePickerProps, "onChange" | "selected"> & {
   selectsRange?: never;
@@ -22,7 +24,11 @@ export const DateInput = ({ label, className, ...props }: DateInputProps) => {
       dateFormat="YYYY-MM-DD"
       selected={(field.value && new Date(field.value)) || null}
       onChange={(date: Date | null | [Date | null, Date | null]) => {
-        helpers.setValue(format(date as Date, "yyyy-MM-dd"));
+        const dtDateOnly = new Date(
+          (date as Date).valueOf() +
+            (date as Date).getTimezoneOffset() * 60 * 1000
+        );
+        helpers.setValue(format(dtDateOnly as Date, "yyyy-MM-dd"));
       }}
       onBlur={field.onBlur}
     />
