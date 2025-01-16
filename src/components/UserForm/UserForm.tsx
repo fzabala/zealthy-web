@@ -15,6 +15,7 @@ import { parse } from "date-fns";
 import { Form, Formik } from "formik";
 import { PropsWithChildren, useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { FaCheckCircle, FaStar, FaUserAlt } from "react-icons/fa";
 import * as yup from "yup";
 
 type Props = PropsWithChildren;
@@ -143,12 +144,18 @@ export const UserForm = ({}: Props) => {
   return (
     <Wizard>
       <Wizard.List>
-        <Wizard.List.Item active={activeStep === 1}>
+        <Wizard.List.Item icon={<FaUserAlt />} active={activeStep === 1}>
           Personal Information
         </Wizard.List.Item>
-        <Wizard.List.Item active={activeStep === 2}>Step 2</Wizard.List.Item>
-        <Wizard.List.Item active={activeStep === 3}>Step 3</Wizard.List.Item>
-        <Wizard.List.Item active={activeStep === 4}>Done!</Wizard.List.Item>
+        <Wizard.List.Item icon={<FaStar />} active={activeStep === 2}>
+          Step 2
+        </Wizard.List.Item>
+        <Wizard.List.Item icon={<FaStar />} active={activeStep === 3}>
+          Step 3
+        </Wizard.List.Item>
+        <Wizard.List.Item icon={<FaCheckCircle />} active={activeStep === 4}>
+          Done!
+        </Wizard.List.Item>
       </Wizard.List>
       <Wizard.Step active={activeStep === 1}>
         <Formik

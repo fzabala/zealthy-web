@@ -1,3 +1,4 @@
+@use "../../app/variables";
 .wizard {
   &-list {
     display: flex;
@@ -8,9 +9,24 @@
       background-color: rgb(var(--background-color-alt));
       border: 1px solid rgb(var(--border-color));
       padding: calc(var(--vertical-space) / 2) calc(var(--horizontal-space) / 2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
 
       &--active {
         background-color: rgb(var(--primary-color));
+        .wizard-list-item-icon {
+          color: white;
+        }
+      }
+
+      &-icon {
+        font-size: 1.125rem;
+        color: rgb(var(--primary-color));
+      }
+
+      &-text {
+        display: none;
       }
     }
   }
@@ -23,6 +39,15 @@
 
     &--active {
       display: block;
+    }
+  }
+  @media screen and (min-width: variables.$breakpoint-md) {
+    &-list {
+      &-item {
+        &-text {
+          display: block;
+        }
+      }
     }
   }
 }

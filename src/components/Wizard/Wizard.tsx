@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import styles from "./Wizard.module.scss";
 
 type WizardProps = PropsWithChildren;
@@ -11,17 +11,17 @@ const WizardList = ({ children }: WizardProps) => {
   return <div className={styles["wizard-list"]}>{children}</div>;
 };
 
-const WizardListItem = ({
-  children,
-  active,
-}: WizardProps & { active: boolean }) => {
+type WizardListItemProps = WizardProps & { active: boolean; icon: ReactNode };
+
+const WizardListItem = ({ children, active, icon }: WizardListItemProps) => {
   return (
     <div
       className={`${styles["wizard-list-item"]} ${
         active ? styles["wizard-list-item--active"] : ""
       }`}
     >
-      {children}
+      <div className={`${styles["wizard-list-item-icon"]}`}>{icon}</div>
+      <div className={`${styles["wizard-list-item-text"]}`}>{children}</div>
     </div>
   );
 };
